@@ -73,7 +73,7 @@ func main() {
 		version:       version,
 	}
 
-	fmt.Println("test132")
+	fmt.Println("test1322")
 	err := app.serve()
 	if err != nil {
 		app.errorLog.Println(err)
