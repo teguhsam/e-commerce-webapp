@@ -1,5 +1,6 @@
 # ecommerce-webapp
 
+Work-In-Progress
 eCommerce Web App with Golang
 
 # Requirements
