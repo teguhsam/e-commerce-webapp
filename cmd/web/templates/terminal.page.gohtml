@@ -87,6 +87,11 @@ Virtual Terminal
 
   stripe = Stripe("{{.StripeKey}}");
 
+  function hidePayButton() {
+    payButton.classList.add("d-none");
+    processing.classList.remove("d-none");
+  }
+
   function val() {
     let form = document.getElementById("charge_form");
     if (form.checkValidity() === false) {
@@ -96,6 +101,7 @@ Virtual Terminal
       return;
     }
     form.classList.add("was-validated");
+    hidePayButton();
   }
 
   (function () {

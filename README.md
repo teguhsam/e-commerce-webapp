@@ -17,6 +17,14 @@ brew install mariadb
 5. Air (https://github.com/air-verse/air)
    run `air`
 
+## Go Packages
+
+Stripe API
+
+```
+go get -u github.com/stripe/stripe-go/v72
+```
+
 # To run application
 
 ```
