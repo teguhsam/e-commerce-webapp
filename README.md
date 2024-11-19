@@ -15,6 +15,7 @@ The project features a backend for handling payment processing using **Stripe** 
   - [Running The Application](#running-the-application)
   - [Project Structure](#project-structure)
   - [Future Improvements](#future-improvements)
+  - [Reference](#reference)
 
 ---
 
@@ -100,3 +101,7 @@ e-commerce-webapp/
 ## Future Improvements
 
 1. macOS Connection Permissions: Configure the build to avoid repeated connection permission prompts when running on macOS.
+
+## Reference
+
+Stripe integration testing: https://docs.stripe.com/testing
