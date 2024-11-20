@@ -45,8 +45,8 @@ Virtual Terminal
     <input
       type="email"
       class="form-control"
-      id="cardholder-email"
-      name="cardholder_email"
+      id="email"
+      name="email"
       required=""
       autocomplete="cardholder-email-new"
     />
@@ -177,7 +177,7 @@ Virtual Terminal
                     result.paymentIntent.currency;
                   processing.classList.add("d-none");
                   showCardSuccess();
-                  // would submit the form
+                  document.getElementById("charge_form").submit();
                 }
               }
             });
