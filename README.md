@@ -11,6 +11,7 @@ The project features a backend for handling payment processing using **Stripe** 
   - [Table of Contents](#table-of-contents)
   - [Requirements](#requirements)
   - [Setup](#setup)
+    - [How to Set Up and Connect to MariaDB Using Homebrew](#how-to-set-up-and-connect-to-mariadb-using-homebrew)
   - [Go Packages](#go-packages)
   - [Running The Application](#running-the-application)
   - [Project Structure](#project-structure)
@@ -47,6 +48,65 @@ Ensure the following dependencies are installed on your system:
 
    ```
    STRIPE_KEY=your_stripe_key
+   ```
+
+### How to Set Up and Connect to MariaDB Using Homebrew
+
+This guide provides a step-by-step process to install, configure, and connect to MariaDB on macOS using Homebrew.
+
+1. Install MariaDB via Homebrew
+
+   Open a terminal and install MariaDB:
+
+   ```
+   brew install mariadb
+   ```
+
+   Start the MariaDB service:
+
+   ```
+   brew services start mariadb
+   ```
+
+   Verify the service is running:
+
+   ```
+   brew services list
+   ```
+
+2. Access MariaDB Command Line
+
+   Attempt to connect to MariaDB as the root user:
+
+   ```
+   mysql -u root
+   ```
+
+   If you encounter an "Access denied" error, connect using elevated permissions:
+
+   ```
+   sudo mysql -u root
+   ```
+
+3. Set a Password for the Root User
+
+   Once connected to MariaDB, set a password for the root user:
+
+   ```
+   ALTER USER 'root'@'localhost' IDENTIFIED BY 'password';
+   FLUSH PRIVILEGES;
+   ```
+
+   Exit MariaDB:
+
+   ```
+   EXIT;
+   ```
+
+   Reconnect using the new password:
+
+   ```
+   mysql -u root -p
    ```
 
 ## Go Packages
