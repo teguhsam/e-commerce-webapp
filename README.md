@@ -111,12 +111,10 @@ This guide provides a step-by-step process to install, configure, and connect to
 
 ## Go Packages
 
-The application requires the Stripe Go SDK for payment integration:
-
-Install it with:
-
 ```
 go get -u github.com/stripe/stripe-go/v72
+
+go get github.com/go-sql-driver/mysql
 ```
 
 ## Running The Application
