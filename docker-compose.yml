@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  # Mailhog service
+  mailhog:
+    image: "jcalonso/mailhog:latest"
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    restart: always
+
+  # MariaDB service
+  mariadb:
+    image: "mariadb:11.4"
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: dbname
+      MYSQL_USER: mariadb
+      MYSQL_PASSWORD: password
+    volumes:
+      - mariadb-data:/var/lib/mysql
+
+# Named volumes for MariaDB to persist data
+volumes:
+  mariadb-data:

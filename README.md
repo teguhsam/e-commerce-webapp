@@ -11,7 +11,7 @@ The project features a backend for handling payment processing using **Stripe** 
   - [Table of Contents](#table-of-contents)
   - [Requirements](#requirements)
   - [Setup](#setup)
-    - [How to Set Up and Connect to MariaDB Using Homebrew](#how-to-set-up-and-connect-to-mariadb-using-homebrew)
+    - [How to Set Up and Connect to MariaDB Using Docker](#how-to-set-up-and-connect-to-mariadb-using-docker)
   - [Go Packages](#go-packages)
   - [Running The Application](#running-the-application)
   - [Project Structure](#project-structure)
@@ -50,64 +50,36 @@ Ensure the following dependencies are installed on your system:
    STRIPE_KEY=your_stripe_key
    ```
 
-### How to Set Up and Connect to MariaDB Using Homebrew
+### How to Set Up and Connect to MariaDB Using Docker
 
-This guide provides a step-by-step process to install, configure, and connect to MariaDB on macOS using Homebrew.
+This guide provides a step-by-step process to set up and connect to MariaDB using Docker.
 
-1. Install MariaDB via Homebrew
+1. Start MariaDB Using Docker
+   To run MariaDB in a Docker container, create a docker-compose.yml file with the following content:
 
-   Open a terminal and install MariaDB:
+   This setup will:
 
-   ```
-   brew install mariadb
-   ```
+   - Expose port 3306 for database access
+   - Set the root password, default database, and a user with a password
+   - Use a volume to persist MariaDB data
 
-   Start the MariaDB service:
-
-   ```
-   brew services start mariadb
-   ```
-
-   Verify the service is running:
+2. Start the Docker Containers
+   Once you have the docker-compose.yml file in place, start the MariaDB container by running:
 
    ```
-   brew services list
+   docker-compose up -d
    ```
 
-2. Access MariaDB Command Line
+   This will download the MariaDB image (if not already available) and start the container in detached mode.
 
-   Attempt to connect to MariaDB as the root user:
-
-   ```
-   mysql -u root
-   ```
-
-   If you encounter an "Access denied" error, connect using elevated permissions:
+3. Connect to MariaDB
+   After starting the container, you can connect to MariaDB using the following command:
 
    ```
-   sudo mysql -u root
+   mysql -u root -p -h 127.0.0.1
    ```
 
-3. Set a Password for the Root User
-
-   Once connected to MariaDB, set a password for the root user:
-
-   ```
-   ALTER USER 'root'@'localhost' IDENTIFIED BY 'password';
-   FLUSH PRIVILEGES;
-   ```
-
-   Exit MariaDB:
-
-   ```
-   EXIT;
-   ```
-
-   Reconnect using the new password:
-
-   ```
-   mysql -u root -p
-   ```
+   When prompted for a password, enter the one you set in the MYSQL_ROOT_PASSWORD environment variable (in this case, password).
 
 ## Go Packages
 
@@ -119,19 +91,27 @@ go get github.com/go-sql-driver/mysql
 
 ## Running The Application
 
-1. Start the backend:
+1. Connect to DB. Open a DB client and enter
 
    ```
-   make start_back
+   host = 'localhost'
+   username = 'root'
+   password = <leave_blank>
    ```
 
-2. Open your browser and navigate to the frontend:
+2. Start the backend and frontend:
+
+   ```
+   make start
+   ```
+
+3. Open your browser and navigate to the frontend:
 
    ```
    http://localhost:4000
    ```
 
-3. The backend API can be accessed at:
+4. The backend API can be accessed at:
    ```
    http://localhost:4001
    ```
