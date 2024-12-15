@@ -2,6 +2,7 @@ package main
 
 import (
 	"ecomm/internal/driver"
+	"ecomm/internal/models"
 	"flag"
 	"fmt"
 	"html/template"
@@ -35,6 +36,7 @@ type application struct {
 	errorLog      *log.Logger
 	templateCache map[string]*template.Template
 	version       string
+	DB            models.DBMOdel
 }
 
 func (app *application) serve() error {
@@ -87,6 +89,7 @@ func main() {
 		errorLog:      errorLog,
 		templateCache: tc,
 		version:       version,
+		DB:            models.DBMOdel{DB: conn},
 	}
 
 	err = app.serve()
