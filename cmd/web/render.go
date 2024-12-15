@@ -9,18 +9,20 @@ import (
 )
 
 type templateData struct {
-	StringMap       map[string]string
-	IntMap          map[string]int
-	FloatMap        map[string]float32
-	Data            map[string]interface{}
-	CSRFToken       string
-	Flash           string
-	Warnign         string
-	Error           string
-	IsAuthenticated int
-	API             string
-	CSSVersion      string
-	StripeKey       string
+	StringMap            map[string]string
+	IntMap               map[string]int
+	FloatMap             map[string]float32
+	Data                 map[string]interface{}
+	CSRFToken            string
+	Flash                string
+	Warnign              string
+	Error                string
+	IsAuthenticated      int
+	API                  string
+	CSSVersion           string
+	StripeKey            string
+	StripeSecretKey      string
+	StripePublishableKey string
 }
 
 var functions = template.FuncMap{
@@ -38,7 +40,8 @@ var templateFS embed.FS
 func (app *application) addDefaultData(td *templateData, r *http.Request) *templateData {
 
 	td.API = app.config.api
-	td.StripeKey = app.config.stripe.key
+	td.StripeSecretKey = app.config.stripe.secret
+	td.StripePublishableKey = app.config.stripe.key
 	return td
 }
 
