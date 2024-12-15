@@ -28,7 +28,7 @@ Ensure the following dependencies are installed on your system:
 2. **Make** (via Homebrew: `brew install make`)
 3. **MariaDB** (via Homebrew: `brew install mariadb`)
 4. **Bootstrap** for frontend styling ([Download Bootstrap](https://getbootstrap.com))
-5. **Soda** for database migration (via Homebrew: `brew install gobuffalo/tap/pop`)
+5. **Soda** for database migration (via Homebrew: `brew install gobuffalo/tap/pop`) ([Soda Docs](https://gobuffalo.io/documentation/database/soda/))
 
 ---
 
