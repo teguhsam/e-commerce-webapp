@@ -28,6 +28,7 @@ Ensure the following dependencies are installed on your system:
 2. **Make** (via Homebrew: `brew install make`)
 3. **MariaDB** (via Homebrew: `brew install mariadb`)
 4. **Bootstrap** for frontend styling ([Download Bootstrap](https://getbootstrap.com))
+5. **Soda** for database migration (via Homebrew: `brew install gobuffalo/tap/pop`)
 
 ---
 
@@ -48,6 +49,12 @@ Ensure the following dependencies are installed on your system:
 
    ```
    STRIPE_KEY=your_stripe_key
+   ```
+
+5. Insert data to database:
+   ```
+   cd migrations
+   soda migrate
    ```
 
 ### How to Set Up and Connect to MariaDB Using Docker
@@ -80,6 +87,11 @@ This guide provides a step-by-step process to set up and connect to MariaDB usin
    ```
 
    When prompted for a password, enter the one you set in the MYSQL_ROOT_PASSWORD environment variable (in this case, password).
+
+4. To connect with user other than root, open you db client, and run the following:
+   ```
+   grant all on widgets.* to '<your-user-name>'@'%' identified by 'password';
+   ```
 
 ## Go Packages
 
