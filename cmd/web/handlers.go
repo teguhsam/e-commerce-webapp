@@ -57,7 +57,7 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 	expiryMonth := pm.Card.ExpMonth
 	expiryYear := pm.Card.ExpYear
 
-	// Create a new custoemr
+	// Create a new customer
 
 	// Create a new order
 
