@@ -279,6 +279,6 @@ func (app *application) BronzePlan(w http.ResponseWriter, r *http.Request) {
 	if err := app.renderTemplate(w, r, "bronze-plan", &templateData{
 		IntMap: intMap,
 	}); err != nil {
-		app.errorLog.Println(err)
+		app.errorLog.Print(err)
 	}
 }
