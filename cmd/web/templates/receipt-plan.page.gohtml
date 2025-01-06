@@ -1,14 +1,13 @@
-{{template "base" .}}
+{{template "base" . }}
 
 {{define "title"}}
-Payment Succeeded
+Payment Succeeded!
 {{ end }}
 
 {{define "content"}}
-{{$txn:= index .Data "txn"}}
+{{$txn := index .Data "txn"}}
 <h2 class="mt-5">Payment Succeeded</h2>
 <hr />
-
 <p>Customer Name: <span id="first_name"></span> <span id="last_name"></span></p>
 <p>Payment Amount: <span id="amount"></span></p>
 <p>Last Four: <span id="last_four"></span></p>
@@ -22,6 +21,7 @@ Payment Succeeded
     document.getElementById("last_name").innerHTML = sessionStorage.last_name;
     document.getElementById("amount").innerHTML = sessionStorage.amount;
     document.getElementById("last_four").innerHTML = sessionStorage.last_four;
+
     sessionStorage.clear();
   }
 </script>
