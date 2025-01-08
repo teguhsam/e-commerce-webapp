@@ -242,14 +242,19 @@ func (app *application) SaveOrder(order models.Order) (int, error) {
 
 func (app *application) CreateAuthToken(w http.ResponseWriter, r *http.Request) {
 	var userInput struct {
-		Email    string `json:"email`
-		Password string `json:"password`
+		Email    string `json:"email"`
+		Password string `json:"password"`
 	}
 
 	err := app.readJSON(w, r, &userInput)
 	if err != nil {
 		app.badRequest(w, r, err)
 		return
+	}
+
+	user, err := app.DB.GetUserByEmail(userInput.Email)
+	if err != nil {
+
 	}
 
 	var payload struct {
