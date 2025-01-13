@@ -38,9 +38,7 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/virtual-terminal">Virtual Terminal</a>
-            </li>
+
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -61,9 +59,12 @@
                 </li>
               </ul>
             </li>
+            <li id="vt-link" class="nav-item d-none">
+              <a class="nav-link" href="/virtual-terminal">Virtual Terminal</a>
+            </li>
           </ul>
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
+            <li id="login-link" class="nav-item d-none">
               <a class="nav-link" href="/login">login</a>
             </li>
           </ul>
@@ -82,6 +83,28 @@
       integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+      let loginLink = document.getElementById("login-link");
+      let vtLink = document.getElementById("vt-link");
+
+      document.addEventListener("DOMContentLoaded", function () {
+        if (localStorage.getItem("token") !== null) {
+          loginLink.innerHTML =
+            '<a class="nav-link" onclick="logout()" href="#!">Logout</a>';
+          vtLink.classList.remove("d-none");
+        } else {
+          loginLink.innerHTML = '<a class="nav-link" href="/login">Login</a>';
+        }
+        loginLink.classList.remove("d-none");
+      });
+
+      function logout() {
+        localStorage.removeItem("token");
+        localStorage.removeItem("token_expiry");
+        location.href = "/login";
+      }
+    </script>
 
     {{block "js" .}}
 
