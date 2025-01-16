@@ -33,6 +33,7 @@ func (app *application) routes() http.Handler {
 
 	// Authentication
 	mux.Get("/login", app.LoginPage)
+	mux.Post("/login", app.PostLoginPage)
 
 	fileServer := http.FileServer(http.Dir("./static"))
 	mux.Handle("/static/*", http.StripPrefix("/static", fileServer))
