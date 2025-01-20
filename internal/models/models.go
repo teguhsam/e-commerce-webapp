@@ -264,7 +264,7 @@ func (m *DBMOdel) GetUserByEmail(email string) (User, error) {
 		&u.UpdatedAt,
 	)
 	if err != nil {
-		return u, nil
+		return u, err
 	}
 
 	return u, nil
