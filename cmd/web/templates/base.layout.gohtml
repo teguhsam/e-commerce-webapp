@@ -63,11 +63,6 @@
                 </li>
               </ul>
             </li>
-            <li id="vt-link" class="nav-item d-none">
-              <a class="nav-link" href="/admin/virtual-terminal">
-                Virtual Terminal
-              </a>
-            </li>
             {{if eq .IsAuthenticated 1}}
             <li class="nav-item dropdown">
               <a
@@ -106,16 +101,16 @@
           {{if eq .IsAuthenticated 1}}
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li id="login-link" class="nav-item">
-              <a class="nav-link" href="/logout">Logout</a></li>
+              <a class="nav-link" href="/logout">Logout</a>
             </li>
           </ul>
-        {{else}}
+          {{else}}
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li id="login-link" class="nav-item">
-              <a class="nav-link" href="/login">Login</a></li>
+              <a class="nav-link" href="/login">Login</a>
             </li>
           </ul>
-        {{end}}
+          {{ end }}
         </div>
       </div>
     </nav>
